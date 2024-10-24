@@ -1,4 +1,4 @@
-name: QuickStart
+name: Project
 
 options:
   xcodeVersion: "15.4"
@@ -14,10 +14,10 @@ settings:
     LAUNCH_STORYBOARD_NAME: LaunchScreen
  
 schemes:
-  QuickStart:
+  Project:
     build:
       targets:
-        QuickStart: all
+        Project: all
     run:
       debugEnabled: false
       commandLineArguments:
@@ -32,12 +32,12 @@ schemes:
     test:
       debugEnabled: false
       targets:
-        - name: QuickStartUnitTests
+        - name: ProjectUnitTests
           parallelizable: false
           randomExecutionOrder: false
 
 targets:
-  QuickStart:
+  Project:
     type: application
     platform: iOS
     settings:
@@ -52,7 +52,7 @@ targets:
           - $(inherited)
           - $(OTHER_LDFLAGS)
           - -ObjC
-        PRODUCT_BUNDLE_IDENTIFIER: "com.quickstart.ios"
+        PRODUCT_BUNDLE_IDENTIFIER: "com.project.ios"
         # ASSETCATALOG_COMPILER_APPICON_NAME: ${IOS_STAGING_BUNDLE_APPICON_NAME}
         # CODE_SIGN_ENTITLEMENTS: AibaShop/Resources/Entitlements/Staging-AibaShop.entitlements
   
@@ -61,26 +61,26 @@ targets:
           echo "pre Build Scripts"
         basedOnDependencyAnalysis: false
     sources:
-      - path: QuickStart
+      - path: Project
         excludes:
           - "**/Info.plist"
           - "**/*.{json,yml}"
-      - path: QuickStart
+      - path: Project
         buildPhase: none
 
-  QuickStartUnitTests:
+  ProjectUnitTests:
     type: bundle.unit-test
     platform: iOS
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.quickstart.ios
-        INFOPLIST_FILE: QuickStart/Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.project.ios
+        INFOPLIST_FILE: Project/Resources/Info.plist
         TARGETED_DEVICE_FAMILY: 1
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: false
         SUPPORTS_MACCATALYST: false
     sources:
-      - path: QuickStartUnitTests
+      - path: ProjectUnitTests
     
     dependencies:
-      - target: QuickStart
+      - target: Project

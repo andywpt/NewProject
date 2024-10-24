@@ -12,7 +12,7 @@ setup: \
 generate_project:
 	$(call start, "Generating project")
 	xcodegen generate --quiet
-	open QuickStart.xcodeproj
+	open Project.xcodeproj
 
 done:
 	$(call success, "All Done ლ(╹◡╹ლ)")
