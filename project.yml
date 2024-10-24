@@ -1,0 +1,86 @@
+name: QuickStart
+
+options:
+  xcodeVersion: "15.4"
+  generateEmptyDirectories: true
+  useBaseInternationalization: false
+  deploymentTarget:
+    iOS: "14.6"
+
+settings:
+  base: 
+    SWIFT_STRICT_CONCURRENCY: complete
+    SWIFT_VERSION: 5
+    LAUNCH_STORYBOARD_NAME: LaunchScreen
+ 
+schemes:
+  QuickStart:
+    build:
+      targets:
+        QuickStart: all
+    run:
+      debugEnabled: false
+      commandLineArguments:
+        # -FIRDebugEnabled: true
+      environmentVariables:
+        - variable: IDEPreferLogStreaming
+          value: YES
+          isEnabled: false
+        - variable: OS_ACTIVITY_MODE
+          value: disable
+          isEnabled: false
+    test:
+      debugEnabled: false
+      targets:
+        - name: QuickStartUnitTests
+          parallelizable: false
+          randomExecutionOrder: false
+
+targets:
+  QuickStart:
+    type: application
+    platform: iOS
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: false
+        SUPPORTS_MACCATALYST: false
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+        OTHER_LDFLAGS:
+          - $(inherited)
+          - $(OTHER_LDFLAGS)
+          - -ObjC
+        PRODUCT_BUNDLE_IDENTIFIER: "com.quickstart.ios"
+        # ASSETCATALOG_COMPILER_APPICON_NAME: ${IOS_STAGING_BUNDLE_APPICON_NAME}
+        # CODE_SIGN_ENTITLEMENTS: AibaShop/Resources/Entitlements/Staging-AibaShop.entitlements
+  
+    preBuildScripts:
+      - script: |
+          echo "pre Build Scripts"
+        basedOnDependencyAnalysis: false
+    sources:
+      - path: QuickStart
+        excludes:
+          - "**/Info.plist"
+          - "**/*.{json,yml}"
+      - path: QuickStart
+        buildPhase: none
+
+  QuickStartUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.quickstart.ios
+        INFOPLIST_FILE: QuickStart/Resources/Info.plist
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: false
+        SUPPORTS_MACCATALYST: false
+    sources:
+      - path: QuickStartUnitTests
+    
+    dependencies:
+      - target: QuickStart
