@@ -33,8 +33,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Medium.ttf</string>
-		<string>DFPZongYiW5-B5.ttf</string>
-		<string>HYwulM.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

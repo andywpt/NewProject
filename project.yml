@@ -12,6 +12,11 @@ settings:
     SWIFT_STRICT_CONCURRENCY: complete
     SWIFT_VERSION: 5
     LAUNCH_STORYBOARD_NAME: LaunchScreen
+
+packages:
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit.git
+    from: 5.7.0
  
 schemes:
   Project:
@@ -60,6 +65,10 @@ targets:
       - script: |
           echo "pre Build Scripts"
         basedOnDependencyAnalysis: false
+
+    dependencies:
+      - package: SnapKit
+
     sources:
       - path: Project
         excludes:
@@ -67,6 +76,7 @@ targets:
           - "**/*.{json,yml}"
       - path: Project
         buildPhase: none
+
 
   ProjectUnitTests:
     type: bundle.unit-test
